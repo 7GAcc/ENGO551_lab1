@@ -1,0 +1,19 @@
+CREATE TABLE books (
+	isbn INTEGER PRIMARY KEY,
+	title VARCHAR NOT NULL,
+	author VARCHAR NOT NULL,
+	pubyear INTEGER NOT NULL
+)
+CREATE TABLE users (
+  username VARCHAR PRIMARY KEY,
+  hash VARCHAR NOT NULL
+)
+CREATE TABLE reviews (
+  id SERIAL PRIMARY KEY,
+  book_isbn INTEGER NOT NULL,
+  user_name VARCHAR NOT NULL,
+  review VARCHAR NOT NULL,
+  rating INTEGER NOT NULL,
+  FOREIGN KEY ("book_isbn") REFERENCES "books",
+  FOREIGN KEY ("user_name") REFERENCES "users"
+)
